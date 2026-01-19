@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Redirect System</title>
+
+    <!-- เรียกใช้ CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+
+    <div id="login-page">
+        <div class="login-card">
+            <div class="avatar-circle"></div>
+            <div class="input-group">
+                <input type="text" id="user" placeholder="ชื่อผู้ใช้">
+                <input type="password" id="pass" placeholder="รหัสผ่าน">
+            </div>
+            <div id="error-text">❌ รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่</div>
+            <button class="btn-submit" onclick="startProcess()">เข้าสู่ระบบ</button>
+        </div>
+    </div>
+
+    <div id="loading-page">
+        <div class="loading-box">
+            <div class="status-pill">
+                เข้าสู่ระบบ
+                <span class="cat-sticker">🐱❤️</span>
+            </div>
+
+            <div class="progress-container">
+                <div class="percent-label" id="percent-txt">0%</div>
+            </div>
+
+            <div class="progress-container">
+                <div id="bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const TARGET_PASSWORD = "27012008"; 
+        const REDIRECT_URL = "https://disorn-glitch.github.io/disorn_menu/";
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                startProcess();
+            }
+        });
+
+        function startProcess() {
+            const passValue = document.getElementById('pass').value;
+            const errorElement = document.getElementById('error-text');
+
+            if (passValue === TARGET_PASSWORD) {
+                errorElement.style.display = 'none';
+                runLoadingAnimation();
+            } else {
+                errorElement.style.display = 'block';
+                document.getElementById('pass').value = '';
+            }
+        }
+
+        function runLoadingAnimation() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('loading-page').style.display = 'flex';
+
+            let count = 0;
+            const bar = document.getElementById('bar-fill');
+            const txt = document.getElementById('percent-txt');
+
+            const timer = setInterval(() => {
+                if (count >= 100) {
+                    clearInterval(timer);
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 1000);
+                } else {
+                    count++;
+                    bar.style.width = count + '%';
+                    txt.innerText = count + '%';
+                }
+            }, 25);
+        }
+    </script>
+
+</body>
+</html>
