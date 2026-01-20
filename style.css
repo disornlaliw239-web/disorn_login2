@@ -88,7 +88,7 @@ input {
     justify-content: center;
     align-items: center;
     height: 100vh;
-   background: url('/asset/PictureMine.png') no-repeat center center/cover;
+   background: url('/asset/Picture.png') no-repeat center center/cover;
 }
 
 .loading-box {
