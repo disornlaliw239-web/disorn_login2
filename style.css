@@ -18,7 +18,7 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-   background: url('https://drive.google.com/file/d/1eJjh2MSDhJms8q4Fd91hxTeleH8RVR6_/view?usp=sharing') no-repeat center center/cover;
+   background: url('/asset/PictureMine.png') no-repeat center center/cover;
 }
 }
 
@@ -88,7 +88,7 @@ input {
     justify-content: center;
     align-items: center;
     height: 100vh;
-   background: url('https://drive.google.com/file/d/1xYXv15sEilzd0XzYVIy6ttpXGpNy32H0/view?usp=sharing') no-repeat center center/cover;
+   background: url('/asset/PictureMine.png') no-repeat center center/cover;
 }
 
 .loading-box {
